@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gentjan Gjinalaj | Embedded AI & Edge Intelligence</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #111111;
+            --accent: #00f2ff;
+            --accent-dim: rgba(0, 242, 255, 0.12);
+            --text-bright: #ffffff;
+            --text-med: #a0a0a0;
+            --border: #222222;
+        }
+        * { box-sizing: border-box; transition: all 0.2s ease; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-med);
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            margin: 0; line-height: 1.6; overflow-x: hidden;
+        }
+        .container { max-width: 850px; margin: 0 auto; padding: 4rem 1.5rem; }
+        
+        .glow {
+            position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% -10%, var(--accent-dim), transparent 60%);
+            pointer-events: none; z-index: -1;
+        }
+
+        header { margin-bottom: 4rem; }
+        h1 { font-size: 2.8rem; color: var(--text-bright); margin: 0; letter-spacing: -1.5px; }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--text-bright), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .tagline { font-size: 1.1rem; color: var(--accent); margin-top: 0.5rem; font-weight: bold; letter-spacing: 1px; }
+        
+        .nav-links { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text-bright); border: 1px solid var(--border); 
+            padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.8rem; background: var(--surface);
+        }
+        .nav-links a:hover { border-color: var(--accent); box-shadow: 0 0 10px var(--accent-dim); }
+
+        .email-section { margin-top: 1rem; font-size: 0.85rem; color: var(--text-med); }
+        .email-section a { color: var(--accent); text-decoration: none; margin-right: 1.5rem; }
+        .email-section a:hover { text-decoration: underline; }
+
+        h2 { font-size: 1.3rem; color: var(--text-bright); border-left: 3px solid var(--accent); padding-left: 1rem; margin: 3rem 0 2rem 0; }
+
+        .hero-box {
+            background: var(--surface); border: 1px solid var(--border); 
+            padding: 2rem; border-radius: 12px; margin-bottom: 3rem;
+        }
+
+        .item { margin-bottom: 2.5rem; border-left: 1px solid var(--border); padding-left: 1.5rem; }
+        .item:hover { border-left-color: var(--accent); }
+        .item-meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+        .role { color: var(--text-bright); font-weight: bold; font-size: 1.05rem; }
+        .org { color: var(--accent); font-weight: 600; font-size: 0.95rem; }
+        .loc { color: #666; font-size: 0.8rem; font-weight: 400; margin-left: 0.5rem; }
+        .date { font-size: 0.8rem; color: #666; }
+        .desc { font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-med); }
+
+        footer { text-align: center; padding: 4rem 0; font-size: 0.75rem; color: #444; border-top: 1px solid var(--border); }
+        b { color: var(--text-bright); }
+    </style>
+</head>
+<body>
+
+<div class="glow"></div>
+
+<div class="container">
+    <header>
+        <h1>Gentjan <span class="gradient-text">GJINALAJ</span></h1>
+        <div class="tagline">Embedded AI Engineer/Researcher</div>
+        
+        <div class="nav-links">
+            <a href="https://linkedin.com/in/gentjan-gjinalaj/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/GentjanGjinalaj" target="_blank">GitHub</a>
+            <a href="https://theses.fr/s410359" target="_blank">Thesis</a>
+        </div>
+
+        <div class="email-section">
+            <span style="color: #666;">Contact:</span>
+            <a href="mailto:gentjan.gjinalaj@savoye.com">gentjan.gjinalaj@savoye.com</a>
+            <a href="mailto:gentjan.gjinalaj@univ-grenoble-alpes.fr">gentjan.gjinalaj@univ-grenoble-alpes.fr</a>
+        </div>
+    </header>
+
+    <div class="hero-box">
+        <p style="margin-top:0; font-size: 1.1rem; color: var(--text-bright);"><b>Building Intelligence for the Edge.</b></p>
+        <p>
+            I specialize in <b>Frugal AI</b>—optimizing high-performance Machine Learning models, from <b>Neural Networks</b> to ensemble methods like <b>XGBoost</b>, for deployment on resource-constrained embedded hardware. My current work within the <b>DATAMOVE</b> team (UGA/IMAG) and <b>Savoye</b> targets the convergence of industrial robotics and intelligent predictive maintenance.
+        </p>
+    </div>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        
+        <div class="item">
+            <div class="item-meta">
+                <span class="role">PhD Candidate (CIFRE)</span>
+                <span class="date">Nov 2024 — Present</span>
+            </div>
+            <div class="org">SAVOYE / UGA - IMAG Laboratory (DATAMOVE Team) <span class="loc">Dijon & Grenoble, FR</span></div>
+            <div class="desc">Scaling <b>Embedded AI</b> for real-time diagnostics in automated warehousing. Developing frugal ML architectures for low-power industrial devices.</div>
+        </div>
+
+        <div class="item">
+            <div class="item-meta">
+                <span class="role">Artificial Intelligence Researcher</span>
+                <span class="date">May 2024 — Oct 2024</span>
+            </div>
+            <div class="org">SAVOYE <span class="loc">Dijon, FR</span></div>
+            <div class="desc">R&D on industrial-grade predictive models, focusing on hardware-software co-design and reliability.</div>
+        </div>
+
+        <div class="item">
+            <div class="item-meta">
+                <span class="role">Data and Software Engineer</span>
+                <span class="date">Feb 2023 — Aug 2023</span>
+            </div>
+            <div class="org">Digitalised (Internship) <span class="loc">Paris, FR</span></div>
+            <div class="desc">Developed <b>DigiScore</b>, a benchmarking tool analyzing digital performance via 300+ metrics from distributed APIs.</div>
+        </div>
+
+        <div class="item">
+            <div class="item-meta">
+                <span class="role">Back End Developer</span>
+                <span class="date">May 2022 — Aug 2022</span>
+            </div>
+            <div class="org">LACONICS (Internship) <span class="loc">Tirana, AL</span></div>
+            <div class="desc">Engineered scalable server-side logic using ASP.NET and GraphQL.</div>
+        </div>
+
+        <div class="item">
+            <div class="item-meta">
+                <span class="role">Electronic Engineer</span>
+                <span class="date">Oct 2021 — Mar 2022</span>
+            </div>
+            <div class="org">ESDP <span class="loc">Tirana, AL</span></div>
+            <div class="desc">Managed electronic system diagnostics and hardware implementation in a full-time capacity.</div>
+        </div>
+
+        <div class="item">
+            <div class="item-meta">
+                <span class="role">Electrical Electronic Engineer</span>
+                <span class="date">May 2021 — Jul 2021</span>
+            </div>
+            <div class="org">HydroElectric Power Plant - HEC Vau Dejes (Internship) <span class="loc">Shkodër, AL</span></div>
+            <div class="desc">Monitoring and maintenance of electrical systems within major hydroelectric infrastructure.</div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        
+        <div class="item">
+            <div class="item-meta">
+                <span class="role">PhD in Embedded Artificial Intelligence</span>
+                <span class="date">2024 — 2027</span>
+            </div>
+            <div class="org">Université Grenoble Alpes (UGA) <span class="loc">Grenoble, FR</span></div>
+        </div>
+
+        <div class="item">
+            <div class="item-meta">
+                <span class="role">Master of Science - MSc in ML & Optimization</span>
+                <span class="date">2022 — 2023</span>
+            </div>
+            <div class="org">Université de Technologie de Compiègne (UTC) <span class="loc">Compiègne, FR</span></div>
+        </div>
+
+        <div class="item">
+            <div class="item-meta">
+                <span class="role">Master of Science - MSc in Software Engineering</span>
+                <span class="date">2021 — 2023</span>
+            </div>
+            <div class="org">Polytechnic University of Tirana (UPT) <span class="loc">Tirana, AL</span></div>
+        </div>
+
+        <div class="item">
+            <div class="item-meta">
+                <span class="role">Bachelor's Degree in Electronics Engineering</span>
+                <span class="date">2018 — 2021</span>
+            </div>
+            <div class="org">Polytechnic University of Tirana (UPT) <span class="loc">Tirana, AL</span></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>GENT.GJ // 2026 // TRUTH-FIRST ENGINEERING</p>
+    </footer>
+</div>
+
+</body>
+</html>
