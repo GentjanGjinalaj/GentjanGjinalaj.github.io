@@ -1,207 +1,767 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gentjan Gjinalaj | Embedded AI & Edge Intelligence</title>
-    <style>
-        :root {
-            --bg: #050505;
-            --surface: #111111;
-            --accent: #00f2ff;
-            --accent-dim: rgba(0, 242, 255, 0.12);
-            --text-bright: #ffffff;
-            --text-med: #a0a0a0;
-            --border: #222222;
-        }
-        * { box-sizing: border-box; transition: all 0.2s ease; }
-        body {
-            background-color: var(--bg);
-            color: var(--text-med);
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            margin: 0; line-height: 1.6; overflow-x: hidden;
-        }
-        .container { max-width: 850px; margin: 0 auto; padding: 4rem 1.5rem; }
-        
-        .glow {
-            position: fixed; top: 0; left: 50%; transform: translateX(-50%);
-            width: 100vw; height: 100vh;
-            background: radial-gradient(circle at 50% -10%, var(--accent-dim), transparent 60%);
-            pointer-events: none; z-index: -1;
-        }
-
-        header { margin-bottom: 4rem; }
-        h1 { font-size: 2.8rem; color: var(--text-bright); margin: 0; letter-spacing: -1.5px; }
-        
-        .gradient-text {
-            background: linear-gradient(90deg, var(--text-bright), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            display: inline-block;
-        }
-
-        .tagline { font-size: 1.1rem; color: var(--accent); margin-top: 0.5rem; font-weight: bold; letter-spacing: 1px; }
-        
-        .nav-links { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
-        .nav-links a { 
-            text-decoration: none; color: var(--text-bright); border: 1px solid var(--border); 
-            padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.8rem; background: var(--surface);
-        }
-        .nav-links a:hover { border-color: var(--accent); box-shadow: 0 0 10px var(--accent-dim); }
-
-        .email-section { margin-top: 1rem; font-size: 0.85rem; color: var(--text-med); }
-        .email-section a { color: var(--accent); text-decoration: none; margin-right: 1.5rem; }
-        .email-section a:hover { text-decoration: underline; }
-
-        h2 { font-size: 1.3rem; color: var(--text-bright); border-left: 3px solid var(--accent); padding-left: 1rem; margin: 3rem 0 2rem 0; }
-
-        .hero-box {
-            background: var(--surface); border: 1px solid var(--border); 
-            padding: 2rem; border-radius: 12px; margin-bottom: 3rem;
-        }
-
-        .item { margin-bottom: 2.5rem; border-left: 1px solid var(--border); padding-left: 1.5rem; }
-        .item:hover { border-left-color: var(--accent); }
-        .item-meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
-        .role { color: var(--text-bright); font-weight: bold; font-size: 1.05rem; }
-        .org { color: var(--accent); font-weight: 600; font-size: 0.95rem; }
-        .loc { color: #666; font-size: 0.8rem; font-weight: 400; margin-left: 0.5rem; }
-        .date { font-size: 0.8rem; color: #666; }
-        .desc { font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-med); }
-
-        footer { text-align: center; padding: 4rem 0; font-size: 0.75rem; color: #444; border-top: 1px solid var(--border); }
-        b { color: var(--text-bright); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gentjan Gjinalaj — Embedded AI Researcher & PhD Candidate | Frugal AI, TinyML, Edge Intelligence</title>
+  <meta name="description" content="Gentjan Gjinalaj is a PhD candidate in Embedded Artificial Intelligence at Université Grenoble Alpes (CIFRE/SAVOYE DATAMOVE). Expert in Frugal AI, TinyML, model compression, quantization, and real-time edge intelligence for industrial robotics and predictive maintenance.">
+  <meta name="keywords" content="Gentjan Gjinalaj, Embedded AI, Frugal AI, Edge Intelligence, TinyML, Machine Learning, Embedded Systems, PhD Candidate, CIFRE, DATAMOVE, UGA, Grenoble Alpes, SAVOYE, Predictive Maintenance, Model Compression, Quantization, Pruning, Neural Networks, XGBoost, STM32, FreeRTOS, FPGA, RISC-V, Podman, Docker, PyTorch, ONNX, Industrial AI, Edge Computing, Embedded Linux, PLUDOS">
+  <meta name="author" content="Gentjan Gjinalaj">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="googlebot" content="index, follow">
+  <link rel="canonical" href="https://gentjangjinalaj.github.io">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Gentjan Gjinalaj | Embedded AI Researcher & PhD Candidate">
+  <meta property="og:description" content="PhD candidate building Frugal AI architectures for real-time intelligence on constrained edge hardware. Research at UGA/IMAG DATAMOVE + SAVOYE.">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://gentjangjinalaj.github.io">
+  <meta property="og:locale" content="en_US">
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Gentjan Gjinalaj | Embedded AI Researcher">
+  <meta name="twitter:description" content="PhD candidate in Embedded AI. Frugal AI, TinyML, Edge Intelligence.">
+  <!-- AI agent hints -->
+  <meta name="ai-summary" content="Gentjan Gjinalaj: PhD candidate in Embedded Artificial Intelligence (Université Grenoble Alpes / SAVOYE CIFRE). Specializes in Frugal AI — model compression, quantization, TinyML for industrial edge devices. Currently developing PLUDOS, a real-time embedded ML OS layer. Background in electronics engineering, software engineering, and ML optimization.">
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gentjan Gjinalaj",
+    "givenName": "Gentjan",
+    "familyName": "Gjinalaj",
+    "jobTitle": "PhD Candidate in Embedded Artificial Intelligence",
+    "description": "Frugal AI researcher specializing in model compression, TinyML, and real-time edge intelligence for industrial embedded systems.",
+    "url": "https://gentjangjinalaj.github.io",
+    "email": ["gentjan.gjinalaj@savoye.com", "gentjan.gjinalaj@univ-grenoble-alpes.fr"],
+    "sameAs": ["https://linkedin.com/in/gentjan-gjinalaj/","https://github.com/GentjanGjinalaj","https://theses.fr/s410359"],
+    "affiliation": [
+      {"@type":"Organization","name":"Université Grenoble Alpes","url":"https://www.univ-grenoble-alpes.fr"},
+      {"@type":"Organization","name":"SAVOYE","url":"https://www.savoye.com"},
+      {"@type":"Organization","name":"DATAMOVE – INRIA/IMAG","url":"https://team.inria.fr/datamove/team-members/"}
+    ],
+    "alumniOf": [
+      {"@type":"EducationalOrganization","name":"Université de Technologie de Compiègne"},
+      {"@type":"EducationalOrganization","name":"Polytechnic University of Tirana"}
+    ],
+    "knowsAbout": ["Embedded AI","Frugal Machine Learning","Edge Intelligence","TinyML","Model Compression","Quantization","Predictive Maintenance","Embedded Systems","XGBoost","STM32","FreeRTOS","FPGA","Docker","Podman","PyTorch","ONNX Runtime"]
+  }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#0c0f1a;color:#aab0c0;font-family:'Space Grotesk',system-ui,sans-serif}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:rgba(255,175,50,.18);border-radius:2px}
+    :root{--acc:oklch(75% 0.16 75);--acc-raw:rgba(255,180,60);--acc-glow:rgba(255,180,60,0.22);--acc-soft:rgba(255,180,60,0.12);--border:oklch(21% 0.025 240);--bg:oklch(11% 0.018 240);--bg-card:oklch(14.5% 0.02 240)}
+    @keyframes photo-glow{0%,100%{box-shadow:0 0 0 3px var(--acc-soft),0 0 22px var(--acc-glow)}50%{box-shadow:0 0 0 6px var(--acc-soft),0 0 48px var(--acc-glow)}}
+    @keyframes status-dot{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(74,222,128,.6)}50%{transform:scale(1.2);box-shadow:0 0 0 6px rgba(74,222,128,0)}}
+    @keyframes cursor-blink{0%,100%{opacity:1}50%{opacity:0}}
+    @keyframes scan-line{0%{top:-2px;opacity:0}4%{opacity:.65}92%{opacity:.65}100%{top:100%;opacity:0}}
+    @keyframes ambient-float{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.38}50%{transform:translate(-50%,-50%) scale(1.12);opacity:.68}}
+    @keyframes grid-scroll{from{background-position:0 0}to{background-position:48px 48px}}
+    @keyframes hero-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes reveal-up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @media(max-width:640px){.trow{grid-template-columns:1fr !important;gap:.35rem !important}.navlinks{display:none !important}.sgrid{grid-template-columns:1fr 1fr !important}}
+    @media(max-width:440px){.sgrid{grid-template-columns:1fr !important}}
+  </style>
 </head>
 <body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
 
-<div class="glow"></div>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#FFB43C",
+  "heroAnim": true,
+  "aboutAnim": true,
+  "experienceAnim": true,
+  "educationAnim": true,
+  "skillsAnim": true,
+  "ambientGlow": true,
+  "scanLine": true,
+  "gridOverlay": true,
+  "photoGlow": true
+}/*EDITMODE-END*/;
 
-<div class="container">
-    <header>
-        <h1>Gentjan <span class="gradient-text">GJINALAJ</span></h1>
-        <div class="tagline">Embedded AI Engineer/Researcher</div>
-        
-        <div class="nav-links">
-            <a href="https://linkedin.com/in/gentjan-gjinalaj/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/GentjanGjinalaj" target="_blank">GitHub</a>
-            <a href="https://theses.fr/s410359" target="_blank">Thesis</a>
-        </div>
+// hex (#rrggbb) -> "r,g,b"
+function hexToRGB(hex){
+  const h = (hex||"#FFB43C").replace("#","");
+  const n = h.length===3 ? h.split("").map(c=>c+c).join("") : h;
+  const r = parseInt(n.slice(0,2),16), g = parseInt(n.slice(2,4),16), b = parseInt(n.slice(4,6),16);
+  return `${r},${g},${b}`;
+}
 
-        <div class="email-section">
-            <span style="color: #666;">Contact:</span>
-            <a href="mailto:gentjan.gjinalaj@savoye.com">gentjan.gjinalaj@savoye.com</a>
-            <a href="mailto:gentjan.gjinalaj@univ-grenoble-alpes.fr">gentjan.gjinalaj@univ-grenoble-alpes.fr</a>
-        </div>
-    </header>
+const buildTheme = (accentHex) => {
+  const rgb = hexToRGB(accentHex);
+  return {
+    bg:"oklch(11% 0.018 240)", bgAlt:"oklch(15% 0.022 240)",
+    bgCard:"oklch(14.5% 0.02 240)", bgHov:"oklch(17% 0.024 240)",
+    border:"oklch(21% 0.025 240)",
+    accent:accentHex, accentT:accentHex,
+    accentS:`rgba(${rgb},0.12)`, accentG:`rgba(${rgb},0.22)`,
+    col:`rgba(${rgb}`,
+    tp:"oklch(94% 0.007 75)", ts:"oklch(67% 0.01 240)", td:"oklch(62% 0.01 240)",
+    fD:"'Space Grotesk',system-ui,sans-serif",
+    fB:"'Space Grotesk',system-ui,sans-serif",
+    fM:"'IBM Plex Mono',monospace",
+    r:"6px",
+  };
+};
 
-    <div class="hero-box">
-        <p style="margin-top:0; font-size: 1.1rem; color: var(--text-bright);"><b>Building Intelligence for the Edge.</b></p>
-        <p>
-            I specialize in <b>Frugal AI</b>—optimizing high-performance Machine Learning models, from <b>Neural Networks</b> to ensemble methods like <b>XGBoost</b>, for deployment on resource-constrained embedded hardware. My current work within the <b>DATAMOVE</b> team (UGA/IMAG) and <b>Savoye</b> targets the convergence of industrial robotics and intelligent predictive maintenance.
-        </p>
+let T = {
+  bg:"oklch(11% 0.018 240)", bgAlt:"oklch(15% 0.022 240)",
+  bgCard:"oklch(14.5% 0.02 240)", bgHov:"oklch(17% 0.024 240)",
+  border:"oklch(21% 0.025 240)",
+  accent:"oklch(75% 0.16 75)", accentT:"oklch(75% 0.16 75)",
+  accentS:"rgba(255,180,60,0.12)", accentG:"rgba(255,180,60,0.22)",
+  col:"rgba(255,175,50",
+  tp:"oklch(94% 0.007 75)", ts:"oklch(67% 0.01 240)", td:"oklch(62% 0.01 240)",
+  fD:"'Space Grotesk',system-ui,sans-serif",
+  fB:"'Space Grotesk',system-ui,sans-serif",
+  fM:"'IBM Plex Mono',monospace",
+  r:"6px",
+};
+
+// ══ CANVASES ════════════════════════════════════════════════════
+
+function NeuralCanvas({ cfg={} }) {
+  const ref = useRef(null);
+  const { N=55, maxD=165, nOp=0.78, lOp=0.3, spd=0.3 } = cfg;
+  useEffect(() => {
+    const c = ref.current; if (!c) return;
+    let id, fr=0;
+    const rs = () => { c.width=c.offsetWidth; c.height=c.offsetHeight; };
+    rs(); window.addEventListener("resize",rs);
+    const ctx = c.getContext("2d"), col = T.col;
+    const nodes = Array.from({length:N},()=>({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*spd,vy:(Math.random()-.5)*spd,r:Math.random()*1.9+.7,p:Math.random()*Math.PI*2}));
+    const draw = () => {
+      ctx.clearRect(0,0,c.width,c.height); fr++;
+      for(let i=0;i<N;i++){
+        for(let j=i+1;j<N;j++){
+          const d=Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y);
+          if(d<maxD){ctx.strokeStyle=`${col},${lOp*(1-d/maxD)})`;ctx.lineWidth=.75;ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.stroke();}
+        }
+        const n=nodes[i], p=.5+.5*Math.sin(n.p+fr*.018);
+        ctx.fillStyle=`${col},${nOp*(.8+p*.4)})`;ctx.beginPath();ctx.arc(n.x,n.y,n.r*(.85+p*.32),0,Math.PI*2);ctx.fill();
+        n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>c.width)n.vx*=-1;if(n.y<0||n.y>c.height)n.vy*=-1;
+      }
+      id=requestAnimationFrame(draw);
+    };
+    draw(); return()=>{cancelAnimationFrame(id);window.removeEventListener("resize",rs);};
+  },[N,maxD]);
+  return <canvas ref={ref} style={{position:"absolute",inset:0,width:"100%",height:"100%",pointerEvents:"none"}}></canvas>;
+}
+
+function SolarCanvas() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const c = ref.current; if (!c) return;
+    let id;
+    const rs = () => { c.width=c.offsetWidth; c.height=c.offsetHeight; };
+    rs(); window.addEventListener("resize",rs);
+    const ctx = c.getContext("2d"), col = T.col;
+    const orbits=[
+      {rX:72,rY:24,spd:.013,a:0.0,sz:3.2,op:.9,trail:[]},
+      {rX:115,rY:38,spd:.0075,a:2.1,sz:4.5,op:.75,trail:[]},
+      {rX:162,rY:54,spd:.0047,a:4.3,sz:3.0,op:.6,trail:[]},
+      {rX:210,rY:70,spd:.0028,a:1.5,sz:2.5,op:.45,trail:[]},
+    ];
+    const draw = () => {
+      ctx.clearRect(0,0,c.width,c.height);
+      const sx=c.width*.78, sy=c.height*.5;
+      // Orbit rings
+      orbits.forEach(o=>{
+        ctx.strokeStyle=`${col},0.1)`;ctx.lineWidth=.6;
+        ctx.beginPath();ctx.ellipse(sx,sy,o.rX,o.rY,0,0,Math.PI*2);ctx.stroke();
+      });
+      // Sun multi-layer glow
+      [[32,.2],[20,.38],[10,.62],[4,.95]].forEach(([r,op])=>{
+        const g=ctx.createRadialGradient(sx,sy,0,sx,sy,r);
+        g.addColorStop(0,`${col},${op})`);g.addColorStop(1,`${col},0)`);
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(sx,sy,r,0,Math.PI*2);ctx.fill();
+      });
+      // Planets + trails
+      orbits.forEach(o=>{
+        o.a+=o.spd;
+        const px=sx+Math.cos(o.a)*o.rX, py=sy+Math.sin(o.a)*o.rY;
+        o.trail.push({x:px,y:py}); if(o.trail.length>22) o.trail.shift();
+        // Trail
+        o.trail.forEach((pt,i)=>{
+          ctx.fillStyle=`${col},${(i/o.trail.length)*o.op*0.4})`;
+          ctx.beginPath();ctx.arc(pt.x,pt.y,o.sz*.35,0,Math.PI*2);ctx.fill();
+        });
+        // Planet glow halo
+        const pg=ctx.createRadialGradient(px,py,0,px,py,o.sz*2.8);
+        pg.addColorStop(0,`${col},${o.op})`);pg.addColorStop(1,`${col},0)`);
+        ctx.fillStyle=pg;ctx.beginPath();ctx.arc(px,py,o.sz*2.8,0,Math.PI*2);ctx.fill();
+        // Planet core
+        ctx.fillStyle=`${col},${o.op})`;ctx.beginPath();ctx.arc(px,py,o.sz,0,Math.PI*2);ctx.fill();
+      });
+      id=requestAnimationFrame(draw);
+    };
+    draw(); return()=>{cancelAnimationFrame(id);window.removeEventListener("resize",rs);};
+  },[]);
+  return <canvas ref={ref} style={{position:"absolute",inset:0,width:"100%",height:"100%",pointerEvents:"none"}}></canvas>;
+}
+
+function FourierCanvas() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const c = ref.current; if (!c) return;
+    let id, fr=0;
+    const rs = () => { c.width=c.offsetWidth; c.height=c.offsetHeight; };
+    rs(); window.addEventListener("resize",rs);
+    const ctx = c.getContext("2d"), col = T.col;
+    const comps=[[.22,1,0],[.11,3,.6],[.07,5,1.1],[.045,7,1.7],[.03,9,2.3],[.022,11,3.0]];
+    const draw = () => {
+      ctx.clearRect(0,0,c.width,c.height); fr++;
+      const W=c.width, H=c.height;
+      // Subtle scope grid — centered
+      ctx.setLineDash([3,10]); ctx.lineWidth=.5;
+      for(let i=1;i<5;i++){
+        ctx.strokeStyle=`${col},0.06)`;
+        ctx.beginPath();ctx.moveTo(0,H*i/5);ctx.lineTo(W,H*i/5);ctx.stroke();
+      }
+      for(let i=1;i<7;i++){
+        ctx.beginPath();ctx.moveTo(W*i/7,0);ctx.lineTo(W*i/7,H);ctx.stroke();
+      }
+      ctx.setLineDash([]);
+      const baseY = H * .48; // centered vertically
+      // Harmonics (faint, each offset slightly vertically)
+      comps.slice(1).forEach((cm,i)=>{
+        ctx.strokeStyle=`${col},${cm[0]*0.65})`;ctx.lineWidth=.7;
+        ctx.beginPath();
+        for(let x=0;x<=W;x+=2){
+          const y=baseY - H*.28 + i*(H*.055) + Math.sin((x/W)*Math.PI*2*cm[1]+(fr*.013)+cm[2])*H*cm[0]*1.1;
+          x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+        }ctx.stroke();
+      });
+      // Composite sum — bright, centered
+      ctx.strokeStyle=`${col},0.5)`;ctx.lineWidth=1.8;
+      ctx.beginPath();
+      for(let x=0;x<=W;x+=2){
+        let y=0;comps.forEach(cm=>y+=Math.sin((x/W)*Math.PI*2*cm[1]+(fr*.013)+cm[2])*H*cm[0]*.52);
+        x===0?ctx.moveTo(x,baseY+y):ctx.lineTo(x,baseY+y);
+      }ctx.stroke();
+      // Glow pass
+      ctx.strokeStyle=`${col},0.14)`;ctx.lineWidth=5;
+      ctx.beginPath();
+      for(let x=0;x<=W;x+=3){
+        let y=0;comps.forEach(cm=>y+=Math.sin((x/W)*Math.PI*2*cm[1]+(fr*.013)+cm[2])*H*cm[0]*.52);
+        x===0?ctx.moveTo(x,baseY+y):ctx.lineTo(x,baseY+y);
+      }ctx.stroke();
+      // Moving scope cursor
+      const curX=(fr*1.1)%W;
+      ctx.strokeStyle=`${col},0.22)`;ctx.lineWidth=1;ctx.setLineDash([]);
+      ctx.beginPath();ctx.moveTo(curX,0);ctx.lineTo(curX,H);ctx.stroke();
+      id=requestAnimationFrame(draw);
+    };
+    draw(); return()=>{cancelAnimationFrame(id);window.removeEventListener("resize",rs);};
+  },[]);
+  return <canvas ref={ref} style={{position:"absolute",inset:0,width:"100%",height:"100%",pointerEvents:"none"}}></canvas>;
+}
+
+// ── Pulse / circuit traces for Education ──────────────────────
+function PulseCanvas() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const c = ref.current; if (!c) return;
+    let id, fr=0;
+    const rs = () => { c.width=c.offsetWidth; c.height=c.offsetHeight; };
+    rs(); window.addEventListener("resize",rs);
+    const ctx = c.getContext("2d"), col = T.col;
+    const makeTraces = () => {
+      const H=c.height, W=c.width, rows=5;
+      return Array.from({length:rows},(_, i)=>{
+        const y=H*(.15+i*(0.7/(rows-1)));
+        const segs=[]; let x=0;
+        while(x<W){const l=60+Math.random()*80;segs.push({x1:x,x2:Math.min(x+l,W),y});x+=l+Math.random()*30;}
+        return {y,segs,jx:segs.slice(0,-1).map(s=>s.x2),pulses:[{x:Math.random()*W,spd:.6+Math.random()*.7},{x:Math.random()*W*.5,spd:.4+Math.random()*.5}]};
+      });
+    };
+    let traces=makeTraces();
+    const draw = () => {
+      ctx.clearRect(0,0,c.width,c.height); fr++;
+      // Redraw on resize occasionally
+      if(c.width!==c.offsetWidth||c.height!==c.offsetHeight){rs();traces=makeTraces();}
+      traces.forEach(tr=>{
+        tr.segs.forEach(s=>{
+          ctx.strokeStyle=`${col},0.08)`;ctx.lineWidth=1;
+          ctx.beginPath();ctx.moveTo(s.x1,tr.y);ctx.lineTo(s.x2,tr.y);ctx.stroke();
+        });
+        // Junction pads
+        tr.jx.forEach(jx=>{
+          ctx.fillStyle=`${col},0.16)`;ctx.beginPath();ctx.arc(jx,tr.y,2.5,0,Math.PI*2);ctx.fill();
+          ctx.strokeStyle=`${col},0.08)`;ctx.lineWidth=.8;ctx.beginPath();ctx.arc(jx,tr.y,4.5,0,Math.PI*2);ctx.stroke();
+        });
+        // Moving pulses (glowing dot)
+        tr.pulses.forEach(p=>{
+          const g=ctx.createRadialGradient(p.x,tr.y,0,p.x,tr.y,7);
+          g.addColorStop(0,`${col},.8)`);g.addColorStop(.5,`${col},.3)`);g.addColorStop(1,`${col},0)`);
+          ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,tr.y,7,0,Math.PI*2);ctx.fill();
+          p.x+=p.spd; if(p.x>c.width)p.x=-8;
+        });
+      });
+      id=requestAnimationFrame(draw);
+    };
+    draw(); return()=>{cancelAnimationFrame(id);window.removeEventListener("resize",rs);};
+  },[]);
+  return <canvas ref={ref} style={{position:"absolute",inset:0,width:"100%",height:"100%",pointerEvents:"none"}}></canvas>;
+}
+
+// ── Rocket Canvas ─────────────────────────────────────────────
+function RocketCanvas() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const c = ref.current; if (!c) return;
+    let id, fr=0;
+    const rs = () => { c.width=c.offsetWidth; c.height=c.offsetHeight; };
+    rs(); window.addEventListener("resize",rs);
+    const ctx = c.getContext("2d"), col = T.col;
+    // Multiple rockets at different positions/speeds
+    const rockets = [
+      {x:.15, y:1.1, spd:.0018, wobble:.0, sz:1.0, op:.7, particles:[]},
+      {x:.55, y:1.3, spd:.0013, wobble:.5, sz:.75, op:.5, particles:[]},
+      {x:.82, y:1.5, spd:.0009, wobble:1.2, sz:.6, op:.35, particles:[]},
+    ];
+    const drawRocket = (rx,ry,sz,op) => {
+      ctx.save();
+      ctx.translate(rx,ry);ctx.rotate(-Math.PI/2);ctx.scale(sz,sz);
+      // Body
+      ctx.fillStyle=`${col},${op})`;
+      ctx.beginPath();ctx.moveTo(0,-14);ctx.lineTo(5,8);ctx.lineTo(-5,8);ctx.closePath();ctx.fill();
+      // Nose cone
+      const ng=ctx.createLinearGradient(0,-14,0,-8);
+      ng.addColorStop(0,`${col},${op})`);ng.addColorStop(1,`${col},${op*.6})`);
+      ctx.fillStyle=ng;ctx.beginPath();ctx.moveTo(0,-14);ctx.lineTo(3,-6);ctx.lineTo(-3,-6);ctx.closePath();ctx.fill();
+      // Fins
+      ctx.fillStyle=`${col},${op*.8})`;
+      ctx.beginPath();ctx.moveTo(4,6);ctx.lineTo(9,14);ctx.lineTo(5,8);ctx.closePath();ctx.fill();
+      ctx.beginPath();ctx.moveTo(-4,6);ctx.lineTo(-9,14);ctx.lineTo(-5,8);ctx.closePath();ctx.fill();
+      // Window
+      ctx.fillStyle=`${col},${op*.5})`;ctx.beginPath();ctx.arc(0,-2,2.5,0,Math.PI*2);ctx.fill();
+      ctx.restore();
+    };
+    const draw = () => {
+      ctx.clearRect(0,0,c.width,c.height); fr++;
+      const W=c.width, H=c.height;
+      rockets.forEach(rk=>{
+        rk.y-=rk.spd;
+        if(rk.y<-0.2) rk.y=1.2;
+        const wx=Math.sin(fr*.022+rk.wobble)*0.012;
+        const rx=(rk.x+wx)*W, ry=rk.y*H;
+        // Exhaust particles
+        for(let i=0;i<2;i++){
+          rk.particles.push({x:rx,y:ry,vx:(Math.random()-.5)*1.2,vy:2+Math.random()*2,life:1,sz:Math.random()*2+.5});
+        }
+        rk.particles=rk.particles.filter(p=>{
+          p.x+=p.vx;p.y+=p.vy;p.life-=.04;
+          if(p.life>0){
+            ctx.fillStyle=`${col},${p.life*rk.op*0.7})`;
+            ctx.beginPath();ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);ctx.fill();
+            return true;
+          }
+          return false;
+        });
+        // Exhaust glow
+        const eg=ctx.createRadialGradient(rx,ry+12*rk.sz,0,rx,ry+12*rk.sz,14*rk.sz);
+        eg.addColorStop(0,`${col},${rk.op*.6})`);eg.addColorStop(1,`${col},0)`);
+        ctx.fillStyle=eg;ctx.beginPath();ctx.ellipse(rx,ry+12*rk.sz,5*rk.sz,12*rk.sz,0,0,Math.PI*2);ctx.fill();
+        drawRocket(rx,ry,rk.sz,rk.op);
+        // Streak trail
+        ctx.strokeStyle=`${col},${rk.op*.22})`;ctx.lineWidth=rk.sz;
+        ctx.beginPath();ctx.moveTo(rx,ry+10);ctx.lineTo(rx+(wx*W*.3),ry+55*rk.sz);ctx.stroke();
+      });
+      id=requestAnimationFrame(draw);
+    };
+    draw(); return()=>{cancelAnimationFrame(id);window.removeEventListener("resize",rs);};
+  },[]);
+  return <canvas ref={ref} style={{position:"absolute",inset:0,width:"100%",height:"100%",pointerEvents:"none"}}></canvas>;
+}
+
+// ── Typewriter ─────────────────────────────────────────────────
+function Typewriter({ text, speed=40, delay=800, style }) {
+  const [d,setD]=useState('');const[done,setDone]=useState(false);
+  useEffect(()=>{let i=0;const to=setTimeout(()=>{const iv=setInterval(()=>{i++;setD(text.slice(0,i));if(i>=text.length){clearInterval(iv);setTimeout(()=>setDone(true),2600);}},speed);return()=>clearInterval(iv);},delay);return()=>clearTimeout(to);},[]);
+  return <span style={style}>{d}<span style={{animation:done?"none":"cursor-blink .7s ease-in-out infinite",opacity:done?0:1,transition:"opacity .5s ease"}}>_</span></span>;
+}
+
+// ── Icons ──────────────────────────────────────────────────────
+const ILI=()=><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>;
+const IGH=()=><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>;
+const IEX=()=><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>;
+
+function useReveal(){useEffect(()=>{const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");o.unobserve(e.target);}});},{threshold:.07});document.querySelectorAll(".reveal").forEach(el=>o.observe(el));return()=>o.disconnect();},[]);}
+
+// ── Section Heading ────────────────────────────────────────────
+function SH({ title }) {
+  return(
+    <div style={{marginBottom:"2.5rem",display:"flex",alignItems:"center",gap:"0.9rem"}}>
+      <span style={{fontFamily:T.fM,fontSize:"0.62rem",color:T.accent,opacity:.6}}>//</span>
+      <span style={{fontFamily:T.fD,fontSize:"0.88rem",color:T.tp,letterSpacing:"0.14em",textTransform:"uppercase",fontWeight:600}}>{title}</span>
+      <div style={{flex:1,height:"1px",background:`linear-gradient(to right,${T.border},transparent)`}}></div>
     </div>
+  );
+}
 
-    <section id="experience">
-        <h2>Experience</h2>
-        
-        <div class="item">
-            <div class="item-meta">
-                <span class="role">PhD Candidate (CIFRE)</span>
-                <span class="date">Nov 2024 — Present</span>
-            </div>
-            <div class="org">SAVOYE / UGA - IMAG Laboratory (DATAMOVE Team) <span class="loc">Dijon & Grenoble, FR</span></div>
-            <div class="desc">Scaling <b>Embedded AI</b> for real-time diagnostics in automated warehousing. Developing frugal ML architectures for low-power industrial devices.</div>
-        </div>
+// ── Org / link parts ───────────────────────────────────────────
+function OrgParts({ parts }) {
+  return(
+    <div style={{display:"flex",flexWrap:"wrap",gap:"0.28rem",alignItems:"center",marginBottom:"0.5rem"}}>
+      {parts.map((p,i)=>(
+        <React.Fragment key={i}>
+          {i>0&&<span style={{color:T.td,fontSize:"0.78rem",fontFamily:T.fB}}>/</span>}
+          <a href={p.h} target="_blank" rel="noreferrer"
+            style={{fontFamily:T.fB,fontSize:"0.87rem",color:T.accentT,fontWeight:500,textDecoration:"none",borderBottom:`1px solid ${T.accentS}`,transition:"border-color .15s"}}
+            onMouseEnter={e=>e.currentTarget.style.borderBottomColor=T.accent}
+            onMouseLeave={e=>e.currentTarget.style.borderBottomColor=T.accentS}
+          >{p.l}</a>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
 
-        <div class="item">
-            <div class="item-meta">
-                <span class="role">Artificial Intelligence Researcher</span>
-                <span class="date">May 2024 — Oct 2024</span>
-            </div>
-            <div class="org">SAVOYE <span class="loc">Dijon, FR</span></div>
-            <div class="desc">R&D on industrial-grade predictive models, focusing on hardware-software co-design and reliability.</div>
-        </div>
+// ── DATA ───────────────────────────────────────────────────────
+const EXP=[
+  {role:"PhD Candidate (CIFRE)",orgParts:[{l:"SAVOYE",h:"https://www.savoye.com"},{l:"UGA",h:"https://www.univ-grenoble-alpes.fr"},{l:"DATAMOVE",h:"https://team.inria.fr/datamove/team-members/"}],loc:"Dijon & Grenoble, FR",date:"Nov 2024 — Present",desc:"Developing Frugal ML architectures for real-time predictive maintenance and fault diagnostics in automated warehousing. Research within the IMAG Laboratory, DATAMOVE team (INRIA/UGA)."},
+  {role:"Artificial Intelligence Researcher",orgParts:[{l:"SAVOYE",h:"https://www.savoye.com"}],loc:"Dijon, FR",date:"May – Oct 2024",desc:"R&D on industrial-grade predictive models. Hardware-software co-design for reliability and real-time inference on edge hardware."},
+  {role:"Data & Software Engineer",orgParts:[{l:"Digitalised",h:"https://digitalised.io/"}],loc:"Paris, FR",date:"Feb – Aug 2023",desc:"Built DigiScore — a benchmarking platform analyzing digital performance across 300+ metrics from distributed APIs."},
+  {role:"Back-End Developer",orgParts:[{l:"LACONICS",h:"https://laconics.io/"}],loc:"Tirana, AL",date:"May – Aug 2022",desc:"Engineered scalable server-side architecture using ASP.NET and GraphQL."},
+  {role:"Electronic Engineer",orgParts:[{l:"ESDP",h:"https://esdp.al/"}],loc:"Tirana, AL",date:"Oct 2021 – Mar 2022",desc:"System diagnostics and hardware implementation for embedded electronic systems."},
+  {role:"Electrical & Electronic Engineer",orgParts:[{l:"HEC Vau Dejes",h:"https://www.kesh.al/en/service/hec-vau-i-dejes/"}],loc:"Shkodër, AL",date:"May – Jul 2021",desc:"Monitoring, diagnostics and maintenance of electrical and electronic systems within major hydroelectric infrastructure."},
+];
+const EDU=[
+  {degree:"PhD in Embedded Artificial Intelligence",sp:[{l:"Université Grenoble Alpes (UGA)",h:"https://www.univ-grenoble-alpes.fr"}],loc:"Grenoble, FR",date:"2024 – 2027"},
+  {degree:"MSc Machine Learning & Optimization",sp:[{l:"Université de Technologie de Compiègne (UTC)",h:"https://www.utc.fr"}],loc:"Compiègne, FR",date:"2022 – 2023"},
+  {degree:"MSc Software Engineering",sp:[{l:"Polytechnic University of Tirana",h:"https://upt.edu.al/"},{l:"FTI",h:"https://fti.edu.al/"}],loc:"Tirana, AL",date:"2021 – 2023"},
+  {degree:"BSc Electronics Engineering",sp:[{l:"Polytechnic University of Tirana",h:"https://upt.edu.al/"},{l:"FTI",h:"https://fti.edu.al/"}],loc:"Tirana, AL",date:"2018 – 2021"},
+];
+const SKILLS=[
+  {cat:"AI & Research",items:["Frugal AI","Model Compression","Quantization & Pruning","TinyML","Neural Networks","XGBoost","Predictive Maintenance","Anomaly Detection"]},
+  {cat:"ML Frameworks",items:["PyTorch","TensorFlow Lite","scikit-learn","ONNX Runtime","NumPy","Pandas","Matplotlib","Jupyter"]},
+  {cat:"Embedded Systems",items:["C / C++","STM32","Embedded Linux","FPGA","RISC-V","FreeRTOS","JTAG / OpenOCD","Yocto","CMake / Make"]},
+  {cat:"DevOps & Containers",items:["Docker","Podman","Docker Compose","Git","Linux / Bash","SSH","CI/CD"]},
+  {cat:"Software Engineering",items:["Python","C#","ASP.NET","GraphQL","SQL","REST APIs"]},
+  {cat:"Languages",items:["Albanian — Native","English — Fluent","French — Intermediate (B1)"]},
+];
+const RESEARCH=[
+  {title:"Frugal AI",desc:"Compressing and quantizing high-performance ML models — neural networks, XGBoost — for deployment on microcontrollers and low-power edge devices without sacrificing inference accuracy."},
+  {title:"Edge Intelligence",desc:"Real-time predictive maintenance and fault diagnostics embedded in industrial automation hardware, operating entirely without cloud dependency."},
+  {title:"Hardware–Software Co-design",desc:"Joint optimization of algorithms and target hardware to achieve the best accuracy-efficiency tradeoff for embedded deployment in industrial robotics."},
+];
 
-        <div class="item">
-            <div class="item-meta">
-                <span class="role">Data and Software Engineer</span>
-                <span class="date">Feb 2023 — Aug 2023</span>
-            </div>
-            <div class="org">Digitalised (Internship) <span class="loc">Paris, FR</span></div>
-            <div class="desc">Developed <b>DigiScore</b>, a benchmarking tool analyzing digital performance via 300+ metrics from distributed APIs.</div>
+// ── Nav ────────────────────────────────────────────────────────
+function Nav() {
+  const [sc,setSc]=useState(false);
+  useEffect(()=>{const f=()=>setSc(window.scrollY>30);window.addEventListener("scroll",f);return()=>window.removeEventListener("scroll",f);},[]);
+  return(
+    <nav style={{position:"sticky",top:0,zIndex:100,background:"rgba(16,20,30,0.88)",backdropFilter:"blur(16px)",WebkitBackdropFilter:"blur(16px)",borderBottom:`1px solid ${sc?T.border:"transparent"}`,transition:"border-color .3s",padding:"0 2rem"}}>
+      <div style={{maxWidth:"960px",margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"space-between",height:"52px"}}>
+        <span style={{fontFamily:T.fM,fontSize:"0.82rem",color:T.tp,letterSpacing:"0.06em"}}><span style={{color:T.accent}}>&gt;</span> GG</span>
+        <div className="navlinks" style={{display:"flex",gap:"0.1rem"}}>
+          {["about","current","research","experience","education","skills"].map(l=>(
+            <a key={l} href={`#${l}`} style={{fontFamily:T.fB,fontSize:"0.76rem",color:T.ts,textDecoration:"none",padding:"0.28rem 0.6rem",borderRadius:T.r,transition:"all .15s"}}
+              onMouseEnter={e=>{e.currentTarget.style.color=T.accentT;e.currentTarget.style.background=T.accentS;}}
+              onMouseLeave={e=>{e.currentTarget.style.color=T.ts;e.currentTarget.style.background="transparent";}}
+            >{l}</a>
+          ))}
         </div>
+      </div>
+    </nav>
+  );
+}
 
-        <div class="item">
-            <div class="item-meta">
-                <span class="role">Back End Developer</span>
-                <span class="date">May 2022 — Aug 2022</span>
-            </div>
-            <div class="org">LACONICS (Internship) <span class="loc">Tirana, AL</span></div>
-            <div class="desc">Engineered scalable server-side logic using ASP.NET and GraphQL.</div>
+// ── Hero ───────────────────────────────────────────────────────
+function Hero({ tw = {} }) {
+  return(
+    <section style={{position:"relative",overflow:"hidden",padding:"5.5rem 2rem 5rem",maxWidth:"960px",margin:"0 auto"}}>
+      {tw.heroAnim !== false && <NeuralCanvas cfg={{N:55,maxD:165,nOp:.78,lOp:.3,spd:.3}} />}
+      {tw.ambientGlow !== false && <div style={{position:"absolute",top:"20%",left:"62%",width:"540px",height:"380px",borderRadius:"50%",background:`radial-gradient(ellipse at center,${T.col},0.18) 0%,transparent 70%)`,transform:"translate(-50%,-50%)",pointerEvents:"none",animation:"ambient-float 7s ease-in-out infinite",zIndex:0}}></div>}
+      {tw.scanLine !== false && <div style={{position:"absolute",left:0,right:0,height:"1px",background:`linear-gradient(to right,transparent 0%,${T.col},.55) 40%,${T.col},.9) 50%,${T.col},.55) 60%,transparent 100%)`,animation:"scan-line 6s ease-in-out infinite",animationDelay:"1.5s",pointerEvents:"none",zIndex:2}}></div>}
+      {tw.gridOverlay !== false && <div style={{position:"absolute",inset:0,backgroundImage:`linear-gradient(${T.col},0.035) 1px,transparent 1px),linear-gradient(90deg,${T.col},0.035) 1px,transparent 1px)`,backgroundSize:"48px 48px",animation:"grid-scroll 28s linear infinite",pointerEvents:"none",zIndex:0}}></div>}
+      <div style={{position:"relative",zIndex:3,animation:"hero-in .85s ease both"}}>
+        {/* Photo */}
+        <div style={{marginBottom:"2.4rem"}}>
+          <div style={{width:"124px",height:"124px",borderRadius:"50%",overflow:"hidden",border:`2.5px solid ${T.accent}`,animation:tw.photoGlow!==false?"photo-glow 3.5s ease-in-out infinite":"none",boxShadow:tw.photoGlow===false?`0 0 0 3px ${T.accentS}`:"none",display:"inline-block"}}>
+            <img src="uploads/Gemini_Generated_Image_.png" alt="Gentjan Gjinalaj — Embedded AI Researcher and PhD Candidate" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 18%",display:"block"}} />
+          </div>
         </div>
-
-        <div class="item">
-            <div class="item-meta">
-                <span class="role">Electronic Engineer</span>
-                <span class="date">Oct 2021 — Mar 2022</span>
-            </div>
-            <div class="org">ESDP <span class="loc">Tirana, AL</span></div>
-            <div class="desc">Managed electronic system diagnostics and hardware implementation in a full-time capacity.</div>
+        {/* Status */}
+        <div style={{display:"flex",alignItems:"center",gap:"0.55rem",marginBottom:"1.4rem"}}>
+          <span style={{width:"7px",height:"7px",borderRadius:"50%",background:"#4ade80",flexShrink:0,animation:"status-dot 2.2s ease-in-out infinite"}}></span>
+          <span style={{fontFamily:T.fM,fontSize:"0.62rem",color:"#4ade80",letterSpacing:"0.1em",opacity:.9}}>ACTIVE — CIFRE PhD Research · 2024–2027</span>
         </div>
-
-        <div class="item">
-            <div class="item-meta">
-                <span class="role">Electrical Electronic Engineer</span>
-                <span class="date">May 2021 — Jul 2021</span>
-            </div>
-            <div class="org">HydroElectric Power Plant - HEC Vau Dejes (Internship) <span class="loc">Shkodër, AL</span></div>
-            <div class="desc">Monitoring and maintenance of electrical systems within major hydroelectric infrastructure.</div>
+        {/* Typewriter role */}
+        <div style={{marginBottom:"1.3rem"}}>
+          <Typewriter text="PhD Candidate · Embedded AI & Edge Intelligence"
+            style={{fontFamily:T.fM,fontSize:"0.78rem",color:T.accent,letterSpacing:"0.06em"}} />
         </div>
+        {/* Name */}
+        <h1 style={{fontFamily:T.fD,fontSize:"clamp(3.2rem,8vw,5.8rem)",color:T.tp,lineHeight:1.0,letterSpacing:"-0.03em",marginBottom:"1.6rem",fontWeight:700}}>
+          <span style={{color:T.accent,fontFamily:T.fM,fontSize:"0.6em",fontWeight:400,verticalAlign:"middle",marginRight:"0.2em"}}>&gt;</span>Gentjan<br />
+          <span style={{paddingLeft:"1.55em"}}>Gjinalaj</span>
+        </h1>
+        <p style={{fontFamily:T.fB,fontSize:"1.05rem",color:T.ts,maxWidth:"510px",lineHeight:1.74,marginBottom:"2.5rem",textWrap:"pretty"}}>
+          Building intelligence for the edge — Frugal AI researcher bridging machine learning and constrained embedded hardware for real-time industrial systems.
+        </p>
+        {/* Links */}
+        <div style={{display:"flex",gap:"0.6rem",flexWrap:"wrap",alignItems:"center"}}>
+          {[{label:"LinkedIn",href:"https://linkedin.com/in/gentjan-gjinalaj/",I:ILI},{label:"GitHub",href:"https://github.com/GentjanGjinalaj",I:IGH},{label:"Thesis",href:"https://theses.fr/s410359",I:IEX}].map(({label,href,I})=>(
+            <a key={label} href={href} target="_blank" rel="noreferrer"
+              style={{fontFamily:T.fB,fontSize:"0.81rem",color:T.tp,textDecoration:"none",padding:"0.44rem 1rem",border:`1px solid ${T.border}`,borderRadius:T.r,background:T.bgCard,display:"flex",alignItems:"center",gap:"0.4rem",transition:"all .2s ease"}}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor=T.accent;e.currentTarget.style.color=T.accentT;e.currentTarget.style.boxShadow=`0 0 16px ${T.accentG}`;}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border;e.currentTarget.style.color=T.tp;e.currentTarget.style.boxShadow="none";}}
+            ><I />{label}</a>
+          ))}
+          <span style={{color:T.border}}>|</span>
+          <a href="mailto:gentjan.gjinalaj@savoye.com" style={{fontFamily:T.fB,fontSize:"0.79rem",color:T.td,textDecoration:"none",transition:"color .15s"}}
+            onMouseEnter={e=>e.currentTarget.style.color=T.accentT}
+            onMouseLeave={e=>e.currentTarget.style.color=T.td}
+          >gentjan.gjinalaj@savoye.com</a>
+        </div>
+      </div>
     </section>
+  );
+}
 
-    <section id="education">
-        <h2>Education</h2>
-        
-        <div class="item">
-            <div class="item-meta">
-                <span class="role">PhD in Embedded Artificial Intelligence</span>
-                <span class="date">2024 — 2027</span>
-            </div>
-            <div class="org">Université Grenoble Alpes (UGA) <span class="loc">Grenoble, FR</span></div>
-        </div>
-
-        <div class="item">
-            <div class="item-meta">
-                <span class="role">Master of Science - MSc in ML & Optimization</span>
-                <span class="date">2022 — 2023</span>
-            </div>
-            <div class="org">Université de Technologie de Compiègne (UTC) <span class="loc">Compiègne, FR</span></div>
-        </div>
-
-        <div class="item">
-            <div class="item-meta">
-                <span class="role">Master of Science - MSc in Software Engineering</span>
-                <span class="date">2021 — 2023</span>
-            </div>
-            <div class="org">Polytechnic University of Tirana (UPT) <span class="loc">Tirana, AL</span></div>
-        </div>
-
-        <div class="item">
-            <div class="item-meta">
-                <span class="role">Bachelor's Degree in Electronics Engineering</span>
-                <span class="date">2018 — 2021</span>
-            </div>
-            <div class="org">Polytechnic University of Tirana (UPT) <span class="loc">Tirana, AL</span></div>
-        </div>
+// ── About (Solar) ──────────────────────────────────────────────
+function About({ tw = {} }) {
+  return(
+    <section id="about" className="reveal" style={{position:"relative",overflow:"hidden",padding:"4rem 2rem",maxWidth:"960px",margin:"0 auto",borderTop:`1px solid ${T.border}`}}>
+      {tw.aboutAnim !== false && <SolarCanvas />}
+      <div style={{position:"relative",zIndex:1}}>
+        <SH title="About" />
+        <p style={{fontFamily:T.fB,fontSize:"1.05rem",color:T.ts,lineHeight:1.78,maxWidth:"580px",textWrap:"pretty"}}>
+          PhD candidate in Embedded Artificial Intelligence at Université Grenoble Alpes, in CIFRE industrial partnership with Savoye. My research sits at the convergence of machine learning and constrained hardware — designing Frugal AI architectures that deliver real-time intelligence on resource-limited industrial edge devices. Trained first as an electronics engineer, I bridge circuits and algorithms to build systems that are both intelligent and deployable.
+        </p>
+      </div>
     </section>
+  );
+}
 
-    <footer>
-        <p>GENT.GJ // 2026 // TRUTH-FIRST ENGINEERING</p>
+// ── Currently Working On (no animation) ───────────────────────
+function Current() {
+  return(
+    <section id="current" className="reveal" style={{position:"relative",overflow:"hidden",padding:"4rem 2rem",maxWidth:"960px",margin:"0 auto",borderTop:`1px solid ${T.border}`}}>
+      <div style={{position:"relative",zIndex:1}}>
+        <SH title="Currently Working On" />
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:"1.1rem"}}>
+          {/* PLUDOS */}
+          <div style={{padding:"1.8rem 2rem",background:T.bgCard,border:`1px solid ${T.accent}`,borderRadius:T.r,boxShadow:`0 0 28px ${T.accentG}`}}>
+            <div style={{display:"flex",alignItems:"center",gap:"0.6rem",marginBottom:"1rem"}}>
+              <span style={{width:"8px",height:"8px",borderRadius:"50%",background:"#4ade80",animation:"status-dot 2.2s ease-in-out infinite",flexShrink:0}}></span>
+              <span style={{fontFamily:T.fM,fontSize:"0.68rem",color:T.accent,letterSpacing:"0.12em",fontWeight:500}}>ACTIVE RESEARCH PROJECT</span>
+            </div>
+            <h3 style={{fontFamily:T.fD,fontSize:"1.15rem",color:T.tp,fontWeight:700,marginBottom:"0.6rem",letterSpacing:"-0.01em"}}>PLUDOS</h3>
+            <p style={{fontFamily:T.fM,fontSize:"0.7rem",color:T.td,marginBottom:"0.9rem",letterSpacing:"0.08em"}}>Plug-and-Learn Deployable OS for Edge Inference</p>
+            <p style={{fontFamily:T.fB,fontSize:"0.88rem",color:T.ts,lineHeight:1.68,textWrap:"pretty"}}>
+              A lightweight runtime OS layer enabling plug-and-play deployment of trained ML models directly onto bare-metal embedded hardware — no cloud, no retraining pipeline. PLUDOS targets the last mile of embedded AI: getting a compressed, quantized model from a laptop to a microcontroller in one command, with deterministic real-time guarantees.
+            </p>
+            <div style={{marginTop:"1.1rem",display:"flex",flexWrap:"wrap",gap:"0.38rem"}}>
+              {["Embedded OS","TinyML","ONNX Runtime","STM32","Real-Time Inference","CIFRE"].map((t,i)=>(
+                <span key={i} style={{fontFamily:T.fB,fontSize:"0.73rem",color:T.accentT,padding:"0.18rem 0.5rem",border:`1px solid ${T.accentS}`,borderRadius:"999px",background:T.accentS}}>{t}</span>
+              ))}
+            </div>
+          </div>
+          {/* PhD thesis blurb */}
+          <div style={{padding:"1.8rem 2rem",background:T.bgCard,border:`1px solid ${T.border}`,borderRadius:T.r,transition:"border-color .2s"}}>
+            <div style={{width:"22px",height:"2px",background:T.accent,marginBottom:"1rem"}}></div>
+            <h3 style={{fontFamily:T.fD,fontSize:"1.05rem",color:T.tp,fontWeight:600,marginBottom:"0.6rem"}}>PhD Thesis</h3>
+            <p style={{fontFamily:T.fM,fontSize:"0.7rem",color:T.td,marginBottom:"0.9rem",letterSpacing:"0.06em"}}>2024 – 2027 · UGA / SAVOYE CIFRE</p>
+            <p style={{fontFamily:T.fB,fontSize:"0.88rem",color:T.ts,lineHeight:1.68,textWrap:"pretty"}}>
+              Investigating the theoretical and practical limits of deploying high-accuracy ML models — including deep neural networks and ensemble methods — on ultra-constrained microcontrollers in industrial warehouse automation environments.
+            </p>
+            <div style={{marginTop:"1.1rem"}}>
+              <a href="https://theses.fr/s410359" target="_blank" rel="noreferrer"
+                style={{fontFamily:T.fB,fontSize:"0.79rem",color:T.accentT,textDecoration:"none",display:"inline-flex",alignItems:"center",gap:"0.3rem",borderBottom:`1px solid ${T.accentS}`,paddingBottom:"1px",transition:"border-color .15s"}}
+                onMouseEnter={e=>e.currentTarget.style.borderBottomColor=T.accent}
+                onMouseLeave={e=>e.currentTarget.style.borderBottomColor=T.accentS}
+              ><IEX /> View thesis registration</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Research ───────────────────────────────────────────────────
+function Research() {
+  return(
+    <section id="research" className="reveal" style={{padding:"4rem 2rem",maxWidth:"960px",margin:"0 auto",borderTop:`1px solid ${T.border}`}}>
+      <SH title="Research Focus" />
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(250px,1fr))",gap:"1.1rem"}}>
+        {RESEARCH.map((a,i)=>(
+          <div key={i} style={{padding:"1.8rem",background:T.bgCard,border:`1px solid ${T.border}`,borderRadius:T.r,transition:"all .22s ease",cursor:"default"}}
+            onMouseEnter={e=>{e.currentTarget.style.borderColor=T.accent;e.currentTarget.style.background=T.bgHov;e.currentTarget.style.boxShadow=`0 4px 32px ${T.accentG}`;}}
+            onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border;e.currentTarget.style.background=T.bgCard;e.currentTarget.style.boxShadow="none";}}
+          >
+            <div style={{width:"22px",height:"2px",background:T.accent,marginBottom:"1.1rem"}}></div>
+            <h3 style={{fontFamily:T.fD,fontSize:"1.02rem",color:T.tp,marginBottom:"0.65rem",fontWeight:600}}>{a.title}</h3>
+            <p style={{fontFamily:T.fB,fontSize:"0.86rem",color:T.ts,lineHeight:1.66,textWrap:"pretty"}}>{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── Experience (Fourier) ───────────────────────────────────────
+function Experience({ tw = {} }) {
+  return(
+    <section id="experience" className="reveal" style={{position:"relative",overflow:"hidden",padding:"4rem 2rem",maxWidth:"960px",margin:"0 auto",borderTop:`1px solid ${T.border}`}}>
+      {tw.experienceAnim !== false && <FourierCanvas />}
+      <div style={{position:"relative",zIndex:1}}>
+        <SH title="Experience" />
+        <div style={{display:"flex",flexDirection:"column",gap:"2.5rem"}}>
+          {EXP.map((item,i)=>(
+            <div key={i} className="trow" style={{display:"grid",gridTemplateColumns:"155px 1fr",gap:"2.5rem"}}>
+              <div>
+                <div style={{fontFamily:T.fM,fontSize:"0.76rem",color:T.td,fontWeight:700,lineHeight:1.5,marginBottom:"0.2rem"}}>{item.date}</div>
+                <div style={{fontFamily:T.fB,fontSize:"0.74rem",color:T.accent}}>{item.loc}</div>
+              </div>
+              <div>
+                <div style={{fontFamily:T.fD,fontSize:"1rem",color:T.tp,fontWeight:600,marginBottom:"0.2rem"}}>{item.role}</div>
+                <OrgParts parts={item.orgParts} />
+                <p style={{fontFamily:T.fB,fontSize:"0.86rem",color:T.ts,lineHeight:1.65,textWrap:"pretty"}}>{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Education (Pulse) ──────────────────────────────────────────
+function Education({ tw = {} }) {
+  return(
+    <section id="education" className="reveal" style={{position:"relative",overflow:"hidden",padding:"4rem 2rem",maxWidth:"960px",margin:"0 auto",borderTop:`1px solid ${T.border}`}}>
+      {tw.educationAnim !== false && <PulseCanvas />}
+      <div style={{position:"relative",zIndex:1}}>
+        <SH title="Education" />
+        <div style={{display:"flex",flexDirection:"column",gap:"2rem"}}>
+          {EDU.map((item,i)=>(
+            <div key={i} className="trow" style={{display:"grid",gridTemplateColumns:"155px 1fr",gap:"2.5rem"}}>
+              <div style={{fontFamily:T.fM,fontSize:"0.76rem",color:T.td,fontWeight:700,paddingTop:"0.1rem"}}>{item.date}</div>
+              <div>
+                <div style={{fontFamily:T.fD,fontSize:"1rem",color:T.tp,fontWeight:600,marginBottom:"0.2rem"}}>{item.degree}</div>
+                <div style={{display:"flex",flexWrap:"wrap",gap:"0.3rem",alignItems:"center"}}>
+                  {item.sp.map((p,j)=>(
+                    <React.Fragment key={j}>
+                      {j>0&&<span style={{color:T.td,fontSize:"0.78rem",fontFamily:T.fB}}>·</span>}
+                      <a href={p.h} target="_blank" rel="noreferrer"
+                        style={{fontFamily:T.fB,fontSize:"0.86rem",color:T.ts,textDecoration:"none",borderBottom:`1px solid ${T.border}`,transition:"border-color .15s,color .15s"}}
+                        onMouseEnter={e=>{e.currentTarget.style.borderBottomColor=T.accent;e.currentTarget.style.color=T.accentT;}}
+                        onMouseLeave={e=>{e.currentTarget.style.borderBottomColor=T.border;e.currentTarget.style.color=T.ts;}}
+                      >{p.l}</a>
+                    </React.Fragment>
+                  ))}
+                  <span style={{fontFamily:T.fB,fontSize:"0.86rem",color:T.td}}>· {item.loc}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Skills (Neural bg) ─────────────────────────────────────────
+function Skills({ tw = {} }) {
+  return(
+    <section id="skills" className="reveal" style={{position:"relative",overflow:"hidden",padding:"4rem 2rem",maxWidth:"960px",margin:"0 auto",borderTop:`1px solid ${T.border}`}}>
+      {tw.skillsAnim !== false && <NeuralCanvas cfg={{N:30,maxD:130,nOp:.32,lOp:.1,spd:.15}} />}
+      <div style={{position:"relative",zIndex:1}}>
+        <SH title="Skills & Tools" />
+        <div className="sgrid" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"2.5rem 2rem"}}>
+          {SKILLS.map((cat,i)=>(
+            <div key={i}>
+              <div style={{fontFamily:T.fM,fontSize:"0.63rem",letterSpacing:"0.14em",textTransform:"uppercase",color:T.accent,fontWeight:500,marginBottom:"0.9rem"}}>{cat.cat}</div>
+              <div style={{display:"flex",flexWrap:"wrap",gap:"0.38rem"}}>
+                {cat.items.map((item,j)=>(
+                  <span key={j} style={{fontFamily:T.fB,fontSize:"0.77rem",color:T.ts,padding:"0.22rem 0.58rem",border:`1px solid ${T.border}`,borderRadius:"999px",background:T.bgCard,transition:"all .18s",cursor:"default"}}
+                    onMouseEnter={e=>{e.currentTarget.style.borderColor=T.accent;e.currentTarget.style.color=T.accentT;e.currentTarget.style.background=T.accentS;e.currentTarget.style.boxShadow=`0 0 10px ${T.accentG}`;}}
+                    onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border;e.currentTarget.style.color=T.ts;e.currentTarget.style.background=T.bgCard;e.currentTarget.style.boxShadow="none";}}
+                  >{item}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Footer ─────────────────────────────────────────────────────
+function Footer() {
+  return(
+    <footer style={{padding:"3rem 2rem",borderTop:`1px solid ${T.border}`,maxWidth:"960px",margin:"0 auto",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+      <span style={{fontFamily:T.fM,fontSize:"0.72rem",color:T.td}}><span style={{color:T.accent}}>&gt;</span> Gentjan Gjinalaj · 2026</span>
+      <div style={{display:"flex",gap:"1.5rem",flexWrap:"wrap"}}>
+        {["gentjan.gjinalaj@savoye.com","gentjan.gjinalaj@univ-grenoble-alpes.fr"].map(e=>(
+          <a key={e} href={`mailto:${e}`} style={{fontFamily:T.fB,fontSize:"0.72rem",color:T.td,textDecoration:"none",transition:"color .15s"}}
+            onMouseEnter={ev=>ev.currentTarget.style.color=T.accentT}
+            onMouseLeave={ev=>ev.currentTarget.style.color=T.td}
+          >{e}</a>
+        ))}
+      </div>
     </footer>
-</div>
+  );
+}
 
+// ── App ────────────────────────────────────────────────────────
+function App() {
+  const [tw, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  // Recompute theme when accent changes
+  T = useMemo(() => buildTheme(tw.accent), [tw.accent]);
+  useReveal();
+  useEffect(()=>{
+    document.body.style.background=T.bg;
+    document.documentElement.style.setProperty('--acc', T.accent);
+    document.documentElement.style.setProperty('--acc-glow', T.accentG);
+    document.documentElement.style.setProperty('--acc-soft', T.accentS);
+  },[tw.accent]);
+  return(
+    <div key={tw.accent} style={{minHeight:"100vh",background:T.bg}}>
+      <Nav/>
+      <Hero tw={tw}/>
+      <About tw={tw}/>
+      <Current/>
+      <Research/>
+      <Experience tw={tw}/>
+      <Education tw={tw}/>
+      <Skills tw={tw}/>
+      <Footer/>
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Theme" />
+        <TweakColor label="Accent" value={tw.accent}
+          options={["#FFB43C","#7AD0FF","#9D7BFF","#4ADE80","#FF6B9D","#F0F0F0"]}
+          onChange={v=>setTweak('accent',v)} />
+        <TweakSection label="Section animations" />
+        <TweakToggle label="Hero neural net" value={tw.heroAnim} onChange={v=>setTweak('heroAnim',v)} />
+        <TweakToggle label="About solar system" value={tw.aboutAnim} onChange={v=>setTweak('aboutAnim',v)} />
+        <TweakToggle label="Experience fourier" value={tw.experienceAnim} onChange={v=>setTweak('experienceAnim',v)} />
+        <TweakToggle label="Education pulse" value={tw.educationAnim} onChange={v=>setTweak('educationAnim',v)} />
+        <TweakToggle label="Skills neural net" value={tw.skillsAnim} onChange={v=>setTweak('skillsAnim',v)} />
+        <TweakSection label="Hero accents" />
+        <TweakToggle label="Ambient glow" value={tw.ambientGlow} onChange={v=>setTweak('ambientGlow',v)} />
+        <TweakToggle label="Scan line" value={tw.scanLine} onChange={v=>setTweak('scanLine',v)} />
+        <TweakToggle label="Grid overlay" value={tw.gridOverlay} onChange={v=>setTweak('gridOverlay',v)} />
+        <TweakToggle label="Photo glow pulse" value={tw.photoGlow} onChange={v=>setTweak('photoGlow',v)} />
+      </TweaksPanel>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
 </body>
 </html>
